@@ -3,21 +3,21 @@
 ## Table of Contents
 
 -[Team Members](#team-members)<br>
-asasas
--[Architecture](#architecture)
-asasa
--[Environment](#environment)
-asas
--[Executing the Web Application](#executing-the-web-application)
-asas
--[Executing Unit Tests](#executing-unit-tests)
-asas
--[Reviewing Unit Test Coverage](#reviewing-unit-test-coverage)
-asas
--[Executing End-To-End Tests](#executing-end-to-end-tests)
-asas
--[Final Video Presentation](#final-video-presentation-)
-asasa
+
+-[Architecture](#architecture)<br>
+
+-[Environment](#environment)<br>
+
+-[Executing the Web Application](#executing-the-web-application)<br>
+
+-[Executing Unit Tests](#executing-unit-tests)<br>
+
+-[Reviewing Unit Test Coverage](#reviewing-unit-test-coverage)<br>
+
+-[Executing End-To-End Tests](#executing-end-to-end-tests)<br>
+
+-[Final Video Presentation](#final-video-presentation-)<br>
+
 
 ## Team Members
 
