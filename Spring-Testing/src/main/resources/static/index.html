@@ -4,8 +4,37 @@
   <title>Calculator by RHassan</title>
 
   <style>
-    .center{
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .container {
       text-align: center;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #response {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
     }
   </style>
 
@@ -13,70 +42,179 @@
 <body>
 <h1 style="text-align: center"> Calculator</h1>
 
-<!-- Input Text Box -->
-<div class="center">
-  <input type="text" id="numberInput" placeholder="Enter numbers separated by commas" /><br>
+<div class="container">
+  <!-- Input Text Box -->
+  <input type="text" id="numberInput" placeholder="Enter numbers separated by commas" />
+  <button onclick="clearInputBox()">Clear</button>
+
+  <h2 style="text-align: center">Descriptive Statistics</h2>
+
+  <!-- Submit Button -->
+  <button onclick="calculateSampleDeviation()">Compute Sample Standard Deviation</button><br><br>
+  <button onclick="calculatePopulationDeviation()">Compute Population Standard Deviation</button><br><br>
+  <button onclick="calculateMean()">Compute Mean</button><br><br>
+
+  <!-- Response Area -->
+  <div id="error"></div>
+  <div id="response"></div>
 </div>
 
-<h2 style="text-align: center">Descriptive Statistics</h2>
-
-<!-- Submit Button -->
-<button onclick="submitNumbers()">Sort Numbers</button>
-
-<!-- Response area -->
-<p id="response"></p>
 
 <script>
-  function meanButton() {
-    fetch('/mean-button') // Calls the Spring Boot endpoint
-            .then(response => response.text())
-            .then(data => {
-              // Display the response in the paragraph
-              document.getElementById('response').innerText = data;
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              document.getElementById('response').innerText = "Something went wrong!";
-            });
-  }
 
-  function sampleStandardDeviationButton() {
-    fetch('/mean-button') // Calls the Spring Boot endpoint
-            .then(response => response.text())
-            .then(data => {
-              // Display the response in the paragraph
-              document.getElementById('response').innerText = data;
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              document.getElementById('response').innerText = "Something went wrong!";
-            });
-  }
-
-  function submitNumbers() {
+  function calculateSampleDeviation() {
     // Get the input value (numbers separated by commas)
     const input = document.getElementById("numberInput").value;
 
-    // Convert the input string into an array of numbers
-    const numberArray = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+    // Convert the input string into an array of floating-point numbers
+    const numberArray = input.split(',')
+            .map(num => parseFloat(num.trim()))
+            .filter(num => !isNaN(num)); // Ensure only valid numbers are included
+
+    // Validate input (at least 2 numbers required)
+    if (numberArray.length < 2) {
+      document.getElementById("response").innerText = "Error: Enter at least two numbers.";
+      return;
+    }
 
     // Send the array to the backend
-    fetch('/sort-numbers', {
+    fetch('/computeSampleDeviation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(numberArray) // Send the array as JSON
     })
-            .then(response => response.json()) // Parse the JSON response
-            .then(data => {
-              // Display the sorted numbers
-              document.getElementById("response").innerText = data.join(', ');
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Error computing standard deviation.");
+              }
+              return response.json();
+            })
+            .then(stdDev => {
+              // Display the sample standard deviation
+              document.getElementById("response").innerText = `Sample Standard Deviation: ${stdDev.toFixed(2)}`;
             })
             .catch(error => {
               console.error('Error:', error);
               document.getElementById("response").innerText = "An error occurred!";
             });
+  }
+
+  function calculatePopulationDeviation() {
+    // Get the input value (numbers separated by commas)
+    const input = document.getElementById("numberInput").value;
+
+    // Split the input into an array and attempt to parse numbers
+    const numberArray = input.split(',')
+            .map(num => num.trim());
+
+    // Validate: Check for non-numeric values
+    const invalidInputs = numberArray.filter(num => isNaN(parseFloat(num)) || num === "");
+
+    if (invalidInputs.length > 0) {
+      document.getElementById("error").innerText = `Error: Invalid input(s): ${invalidInputs.join(", ")}`;
+      document.getElementById("response").innerText = ""; // Clear previous result
+      return;
+    }
+
+    // Convert valid inputs into an array of numbers
+    const validNumbers = numberArray.map(num => parseFloat(num));
+
+    // Validate: Ensure at least one valid number
+    if (validNumbers.length < 1) {
+      document.getElementById("error").innerText = "Error: Enter at least one valid number.";
+      document.getElementById("response").innerText = ""; // Clear previous result
+      return;
+    }
+
+    // Clear previous error messages
+    document.getElementById("error").innerText = "";
+
+    // Send the array to the backend
+    fetch('/computePopulationDeviation', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(validNumbers) // Send the array as JSON
+    })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Error computing population standard deviation.");
+              }
+              return response.json();
+            })
+            .then(stdDev => {
+              // Display the population standard deviation
+              document.getElementById("response").innerText = `Population Standard Deviation: ${stdDev.toFixed(2)}`;
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              document.getElementById("response").innerText = "An error occurred!";
+            });
+  }
+
+  function calculateMean() {
+    // Get the input value (numbers separated by commas)
+    const input = document.getElementById("numberInput").value;
+
+    // Split the input into an array and attempt to parse numbers
+    const numberArray = input.split(',')
+            .map(num => num.trim());
+
+    // Validate: Check for non-numeric values
+    const invalidInputs = numberArray.filter(num => isNaN(parseFloat(num)) || num === "");
+
+    if (invalidInputs.length > 0) {
+      document.getElementById("error").innerText = `Error: Invalid input(s): ${invalidInputs.join(", ")}`;
+      document.getElementById("response").innerText = ""; // Clear previous result
+      return;
+    }
+
+    // Convert valid inputs into an array of numbers
+    const validNumbers = numberArray.map(num => parseFloat(num));
+
+    // Validate: Ensure at least one valid number
+    if (validNumbers.length < 1) {
+      document.getElementById("error").innerText = "Error: Enter at least one valid number.";
+      document.getElementById("response").innerText = ""; // Clear previous result
+      return;
+    }
+
+    // Clear previous error messages
+    document.getElementById("error").innerText = "";
+
+    // Send the array to the backend
+    fetch('/computeMean', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(validNumbers) // Send the array as JSON
+    })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error("Error computing mean.");
+              }
+              return response.json();
+            })
+            .then(mean => {
+              // Display the mean
+              document.getElementById("response").innerText = `Mean: ${mean.toFixed(2)}`;
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              document.getElementById("response").innerText = "An error occurred!";
+            });
+  }
+
+  function clearInputBox() {
+    // Clear the text box
+    document.getElementById("numberInput").value = "";
+    // Clear the response message
+    document.getElementById("response").innerText = "";
+    document.getElementById("error").innerText = "";
   }
 </script>
 </body>
