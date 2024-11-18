@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator by RHassan</title>
+
+  <style>
+    .center{
+      text-align: center;
+    }
+  </style>
+
+</head>
+<body>
+<h1 style="text-align: center"> Calculator</h1>
+
+<!-- Input Text Box -->
+<div class="center">
+  <input type="text" id="numberInput" placeholder="Enter numbers separated by commas" /><br>
+</div>
+
+<h2 style="text-align: center">Descriptive Statistics</h2>
+
+<!-- Submit Button -->
+<button onclick="submitNumbers()">Sort Numbers</button>
+
+<!-- Response area -->
+<p id="response"></p>
+
+<script>
+  function meanButton() {
+    fetch('/mean-button') // Calls the Spring Boot endpoint
+            .then(response => response.text())
+            .then(data => {
+              // Display the response in the paragraph
+              document.getElementById('response').innerText = data;
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              document.getElementById('response').innerText = "Something went wrong!";
+            });
+  }
+
+  function sampleStandardDeviationButton() {
+    fetch('/mean-button') // Calls the Spring Boot endpoint
+            .then(response => response.text())
+            .then(data => {
+              // Display the response in the paragraph
+              document.getElementById('response').innerText = data;
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              document.getElementById('response').innerText = "Something went wrong!";
+            });
+  }
+
+  function submitNumbers() {
+    // Get the input value (numbers separated by commas)
+    const input = document.getElementById("numberInput").value;
+
+    // Convert the input string into an array of numbers
+    const numberArray = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+
+    // Send the array to the backend
+    fetch('/sort-numbers', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(numberArray) // Send the array as JSON
+    })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+              // Display the sorted numbers
+              document.getElementById("response").innerText = data.join(', ');
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              document.getElementById("response").innerText = "An error occurred!";
+            });
+  }
+</script>
+</body>
+</html>
