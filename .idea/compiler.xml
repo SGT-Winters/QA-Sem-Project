@@ -10,6 +10,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="calculator-logic" target="21" />
+      <module name="Spring-Testing" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
