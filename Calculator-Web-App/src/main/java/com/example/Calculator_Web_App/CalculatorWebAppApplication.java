@@ -1,11 +1,14 @@
-package com.example.Spring.Testing;
+package com.example.Calculator_Web_App;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class CalculatorWebAppApplication {
+
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+
+		SpringApplication.run(CalculatorWebAppApplication.class, args);
 	}
+
 }
