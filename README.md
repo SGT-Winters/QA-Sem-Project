@@ -40,6 +40,8 @@ testing frameworks that are structured as follows:
 
 ![Test](images/Architecture.png)
 
+<br><br>-[Back To Top](#table-of-contents)
+
 ## Environment
 
 To prepare your environment to execute this application:<br>
@@ -54,6 +56,8 @@ To check if you have java installed onto your machine, run this command on the c
 To check if you have Maven installed onto your machine, run this command on the command terminal:
 <br><br>
 ![Test](images/Maven%20Downloaded.PNG)
+   
+<br><br>-[Back To Top](#table-of-contents)
 
 ## Executing the Web Application
 To execute the Web Application from the command line. Make sure that:<br><br>
@@ -63,6 +67,8 @@ To execute the Web Application from the command line. Make sure that:<br><br>
 4. Type the command "mvn spring-boot:run" on the command line
 5. After the application start, launch your browser of choice and connect to http://localhost:8080
 
+<br><br>-[Back To Top](#table-of-contents)
+
 ## Executing Unit Tests
 To execute the Unit Test from the command line. Make sure that:<br><br>
 1. Locate the file path containing the tests pom.xml file.
@@ -70,12 +76,16 @@ To execute the Unit Test from the command line. Make sure that:<br><br>
 3. Paste the file path onto the command line like this "cd [file path]"
 4. Finally, type "mvn -Dtest=TestCalculatorLogic test"
 
+<br><br>-[Back To Top](#table-of-contents)
+
 ## Reviewing Unit Test Coverage
 
 A unit test with coverage has been conducted to show the backend calculator logic methods and statements have been
 checked to work 100% of the time.<br><br>
 
 ![Test](images/Coverage.PNG)
+
+<br><br>-[Back To Top](#table-of-contents)
 
 ## Executing End-To-End Tests
 
@@ -87,5 +97,7 @@ To execute end-to-end testing from the command line. Make sure that:<br>
 
 End result should look like this:<br><br>
 ![Test](images/e3e%20command%20pass.PNG)
+
+<br><br>-[Back To Top](#table-of-contents)
 
 ## Final Video Presentation 
