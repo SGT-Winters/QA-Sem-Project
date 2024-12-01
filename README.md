@@ -56,11 +56,19 @@ To check if you have Maven installed onto your machine, run this command on the 
 ![Test](images/Maven%20Downloaded.PNG)
 
 ## Executing the Web Application
-1. Locate the file path containing the main pom.xml file.<br>
+To execute the Web Application from the command line. Make sure that:<br><br>
+1. Locate the file path containing the main pom.xml file.
 2. Open the command prompt
 3. Paste the file path onto the command line like this "cd [file path]"
+4. Type the command "mvn spring-boot:run" on the command line
+5. After the application start, launch your browser of choice and connect to http://localhost:8080
 
 ## Executing Unit Tests
+To execute the Unit Test from the command line. Make sure that:<br><br>
+1. Locate the file path containing the tests pom.xml file.
+2. Open the command prompt
+3. Paste the file path onto the command line like this "cd [file path]"
+4. Finally, type "mvn -Dtest=TestCalculatorLogic test"
 
 ## Reviewing Unit Test Coverage
 
