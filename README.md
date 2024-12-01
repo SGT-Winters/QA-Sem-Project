@@ -61,6 +61,8 @@ To check if you have Maven installed onto your machine, run this command on the 
 
 ## Reviewing Unit Test Coverage
 
+![Test](images/Coverage.PNG)
+
 ## Executing End-To-End Tests
 
 ## Final Video Presentation 
