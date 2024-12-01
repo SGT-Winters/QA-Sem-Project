@@ -72,6 +72,9 @@ To execute the Unit Test from the command line. Make sure that:<br><br>
 
 ## Reviewing Unit Test Coverage
 
+A unit test with coverage has been conducted to show the backend calculator logic methods and statements have been
+checked to work 100% of the time.<br><br>
+
 ![Test](images/Coverage.PNG)
 
 ## Executing End-To-End Tests
