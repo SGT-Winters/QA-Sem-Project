@@ -42,6 +42,19 @@ testing frameworks that are structured as follows:
 
 ## Environment
 
+To prepare your environment to execute this application:<br>
+1. Install Java (version 21+) for your system: https://www.oracle.com/java/technologies/downloads/
+<br><br>
+To check if you have java installed onto your machine, run this command on the command terminal:
+<br><br>
+![Test](images/Java%20download.PNG)
+<br><br>
+2. Install Apache Maven for your system: https://maven.apache.org/download.cgi
+<br><br>
+To check if you have Maven installed onto your machine, run this command on the command terminal:
+<br><br>
+![Test](images/Maven%20Downloaded.PNG)
+
 ## Executing the Web Application
 
 ## Executing Unit Tests
