@@ -76,6 +76,11 @@ To execute the Unit Test from the command line. Make sure that:<br><br>
 3. Paste the file path onto the command line like this "cd [file path]"
 4. Finally, type "mvn -Dtest=TestCalculatorLogic test"
 
+<br><Br>Testing result should look like this 
+
+![Test](images/ca)
+
+
 <br><br>-[Back To Top](#table-of-contents)
 
 ## Reviewing Unit Test Coverage
