@@ -12,6 +12,8 @@ Rafay Hassan
 
 -[Architecture](#architecture)<br>
 
+![Test](images/Architecture.png)
+
 -[Environment](#environment)<br>
 
 -[Executing the Web Application](#executing-the-web-application)<br>
