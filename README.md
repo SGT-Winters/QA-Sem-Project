@@ -29,6 +29,15 @@ Rafay Hassan
 
 ## Architecture
 
+The diagram below outlines the architecture of the Web-Based Calculator that incorporates unit testings and end-to-end
+testing frameworks that are structured as follows:
+<br>
+-Calculator End-to-End Tests (Playwright)
+-Calculator Logic Unit Tests (JUnit)
+-Calculator Logic Package
+-Calculator Web Server App
+-Browser Integration
+
 ![Test](images/Architecture.png)
 
 ## Environment
