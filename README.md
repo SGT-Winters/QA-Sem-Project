@@ -78,7 +78,7 @@ To execute the Unit Test from the command line. Make sure that:<br><br>
 
 <br><Br>Testing result should look like this 
 
-![Test](images/ca)
+![Test](images/calculatorLogicJtest.PNG)
 
 
 <br><br>-[Back To Top](#table-of-contents)
