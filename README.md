@@ -8,11 +8,7 @@ to guide usage and testing.
 
 -[Team Members](#team-members)<br>
 
-Rafay Hassan
-
 -[Architecture](#architecture)<br>
-
-![Test](images/Architecture.png)
 
 -[Environment](#environment)<br>
 
@@ -29,7 +25,11 @@ Rafay Hassan
 
 ## Team Members
 
+Rafay Hassan
+
 ## Architecture
+
+![Test](images/Architecture.png)
 
 ## Environment
 
