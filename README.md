@@ -8,6 +8,8 @@ to guide usage and testing.
 
 -[Team Members](#team-members)<br>
 
+Rafay Hassan
+
 -[Architecture](#architecture)<br>
 
 -[Environment](#environment)<br>
