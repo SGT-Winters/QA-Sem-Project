@@ -56,6 +56,9 @@ To check if you have Maven installed onto your machine, run this command on the 
 ![Test](images/Maven%20Downloaded.PNG)
 
 ## Executing the Web Application
+1. Locate the file path containing the main pom.xml file.<br>
+2. Open the command prompt
+3. Paste the file path onto the command line like this "cd [file path]"
 
 ## Executing Unit Tests
 
