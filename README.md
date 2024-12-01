@@ -80,7 +80,7 @@ To execute end-to-end testing from the command line. Make sure that:<br>
 1. The Web Application is running<br>
 2. Copy the file path where the "test" folder is located<br>
 3. Open the command prompt and type "cd [Paste File Path]"<br>
-4. Finally, type "mvn -Dtest=TestCalculatorLogic test"<br><br>
+4. Finally, type "mvn -Dtest=TestExample test"<br><br>
 
 End result should look like this:<br><br>
 ![Test](images/e3e%20command%20pass.PNG)
